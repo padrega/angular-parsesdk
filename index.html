@@ -8,10 +8,11 @@
 
     <!-- parse sdk js -->
     <script src="http://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <!-- bootstrap js -->
     <script src="lib/bootstrap/js/bootstrap.min.js"></script>
     <!-- angularjs js -->
-    <script src="lib/angularjs/js/angular.min.js"></script>
+    <script src="lib/angular/angular.min.js"></script>
     <!-- angularparse js -->
     <script src="lib/angularparse/angularparse.js"></script>
     <!-- pagging js -->
@@ -35,6 +36,9 @@
     </div>
     
     <div ng-controller="PaginationController" class="container" >
+        <button type="button" class="btn btn-default" aria-label="Refresh" ng-click="refresh();">
+            <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+        </button>
       <ul class="list-group">
         <li class="list-group-item" ng-repeat="item in items">(#{{item.id}}) {{item.createdAt}}</li>
       </ul>
