@@ -1,9 +1,10 @@
-app.controller('PaginationController', function($scope, $timeout, parsePersistence, parseQuery, MicroCache) {
+app.controller('PaginationController', function($scope, $timeout, parsePersistence, parseQuery, MicroCache, blockUI) {
 
     $scope.current = 1;
     $scope.items = [];
     $scope.total = 0;
-    $scope.pageSize = 5; 
+    $scope.pageSize = 5;
+    $scope.search = "";
 
     $scope.refresh = function() {
         MicroCache.clear();
@@ -16,8 +17,13 @@ app.controller('PaginationController', function($scope, $timeout, parsePersisten
         if (MicroCache.contains(key)) {
             $scope.items = MicroCache.get(key);
         } else {
-            var query = parseQuery.new('TestObject').skip(($scope.current-1)*$scope.pageSize).limit($scope.pageSize);
-            
+            blockUI.start();
+            var query = "";
+            if ($scope.search === "") { 
+                  query = parseQuery.new('TestObject').skip(($scope.current-1)*$scope.pageSize).limit($scope.pageSize);
+                }  else {
+                  query = parseQuery.new('TestObject').contains('objectId', $scope.search).skip(($scope.current-1)*$scope.pageSize).limit($scope.pageSize);
+                }
             parseQuery.find(query)
             .then(function(results) {
                 $scope.items = results;
@@ -28,9 +34,12 @@ app.controller('PaginationController', function($scope, $timeout, parsePersisten
                 }, function(error) {
                     alert(JSON.stringify(error));
                 });
+                blockUI.stop();
             }, function(error) {
-                alert(JSON.stringify(error));
+              blockUI.stop();
+              alert(JSON.stringify(error));
             });
+            
         }
     };
 

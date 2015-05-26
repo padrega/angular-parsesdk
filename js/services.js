@@ -5,7 +5,7 @@
  * 
  * @tags inmemory, keyvalue, cache, node, browser
 */
-app.factory('MicroCache', function(){
+app.service('MicroCache', function(){
 	var _values	= {};
 	return {
 		get	: function(key){ return _values[key];	},

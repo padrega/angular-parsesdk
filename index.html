@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/angular-block-ui/angular-block-ui.min.css">
     <title></title>
 
     <!-- parse sdk js -->
@@ -15,6 +16,7 @@
     <script src="lib/angular/angular.min.js"></script>
     <!-- angularparse js -->
     <script src="lib/angularparse/angularparse.js"></script>
+    <script src="lib/angular-block-ui/angular-block-ui.min.js"></script>
     <!-- pagging js -->
     <script src="lib/brantwills.paging/paging.js"></script>
 
@@ -35,10 +37,11 @@
       <button ng-click="next()" ng-show="hasNext()">Next</button>
     </div>
     
-    <div ng-controller="PaginationController" class="container" >
+    <div ng-controller="PaginationController" class="container">
         <button type="button" class="btn btn-default" aria-label="Refresh" ng-click="refresh();">
             <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
         </button>
+        <input type="text" data-ng-model="search" />
       <ul class="list-group">
         <li class="list-group-item" ng-repeat="item in items">(#{{item.id}}) {{item.createdAt}}</li>
       </ul>

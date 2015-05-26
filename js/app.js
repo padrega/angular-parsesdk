@@ -3,7 +3,7 @@
 
 Parse.initialize("TgB1ZolkjZiMzMmpJibp5K941ieYIAlgvFWgmfTs", "3ztl0oMYStvKkVWoafOJlrlTMK4R1a8GrDbVQ6iR");
 
-var app = angular.module('plunker', ["angularParse","brantwills.paging"]);
+var app = angular.module('plunker', ["angularParse","brantwills.paging", "blockUI"]);
 
 app.controller('MainCtrl', function($scope, $timeout, parsePersistence, parseQuery) {
 
@@ -90,4 +90,13 @@ app.controller('MainCtrl', function($scope, $timeout, parsePersistence, parseQue
     
   };
   
+});
+
+app.config(function(blockUIConfig) {
+
+  // Change the default overlay message
+  blockUIConfig.message = 'Loading...';
+
+  // Change the default delay to 100ms before the blocking is visible
+  blockUIConfig.delay = 250;
 });
