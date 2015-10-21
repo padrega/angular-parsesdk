@@ -1,0 +1,19 @@
+{
+  "name": "angular-parsesdk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/padrega/angular-parsesdk.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/padrega/angular-parsesdk/issues"
+  },
+  "homepage": "https://github.com/padrega/angular-parsesdk#readme"
+}
